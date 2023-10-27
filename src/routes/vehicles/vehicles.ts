@@ -58,7 +58,7 @@ export class Vehicle {
         id: uuidv4(),
         ...req.body,
       });
-      this.vehiclesList.push(<VehicleInterface>newItem);
+      this.vehiclesList.push(<VehicleInterface><unknown>newItem);
       SuccessHandler.handleCreated(res);
     } catch (error) {
       ErrorHandler.handleBadRequest(res, error.message);
@@ -75,7 +75,7 @@ export class Vehicle {
 
     try {
       const updatedItem = VehicleSchema.updateVehicle().parse(req.body);
-      this.vehiclesList[index] = <VehicleInterface>{ id, ...updatedItem };
+      this.vehiclesList[index] = <VehicleInterface><unknown>{ id, ...updatedItem };
       SuccessHandler.handleOk(res);
     } catch (error) {
       ErrorHandler.handleBadRequest(res, error.message);

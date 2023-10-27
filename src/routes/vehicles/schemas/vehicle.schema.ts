@@ -15,12 +15,12 @@ export class VehicleSchema {
 
   public static updateVehicle = () =>
     z.object({
-        brand: z.string(),
-        model: z.string(),
-        year: z.number(),
-        registrationNumber: z.string(),
-        type: z.enum(["truck", "van"]),
-        status: z.enum(["available", "inUse", "underMaintenance"]),
-        driverId: z.string().nullable(),
+      brand: z.string(),
+      model: z.string(),
+      year: z.number(),
+      registrationNumber: z.string(),
+      type: z.enum(["truck", "van"]),
+      status: z.enum(["available", "inUse", "underMaintenance"]),
+      driverId: z.string().nullable(),
     });
 }

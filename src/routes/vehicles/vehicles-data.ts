@@ -1,7 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export type VehicleType = "truck" | "van";
-export type VehicleStatus = "available" | "inUse" | "underMaintenance";
+// export type VehicleType = VehicleType.truck | VehicleType.van;
+// export type VehicleStatus = VehicleStatus.available | VehicleStatus.inUse | VehicleStatus.underMaintenance;
+
+export enum VehicleType {
+  truck = 'Ciężarówka',
+  van = 'Furgonetka',
+}
+
+export enum VehicleStatus {
+  available = 'Dostępny',
+  inUse = 'W użyciu',
+  underMaintenance = 'Podczas prac technicznych'
+}
 
 export interface VehicleInterface {
   id: string;
@@ -21,8 +32,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "FH16",
     year: 2022,
     registrationNumber: "ABC123",
-    type: "truck",
-    status: "available",
+    type: VehicleType.truck,
+    status: VehicleStatus.available,
     driverId: null,
   },
   {
@@ -31,8 +42,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Sprinter",
     year: 2021,
     registrationNumber: "DEF456",
-    type: "van",
-    status: "inUse",
+    type: VehicleType.van,
+    status: VehicleStatus.inUse,
     driverId: "1",
   },
   {
@@ -41,8 +52,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Transit",
     year: 2020,
     registrationNumber: "GHI789",
-    type: "van",
-    status: "available",
+    type: VehicleType.van,
+    status: VehicleStatus.available,
     driverId: null,
   },
   {
@@ -51,8 +62,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "R500",
     year: 2023,
     registrationNumber: "JKL012",
-    type: "truck",
-    status: "underMaintenance",
+    type: VehicleType.truck,
+    status: VehicleStatus.underMaintenance,
     driverId: null,
   },
   {
@@ -61,8 +72,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Daily",
     year: 2019,
     registrationNumber: "MNO345",
-    type: "van",
-    status: "available",
+    type: VehicleType.van,
+    status: VehicleStatus.available,
     driverId: "2",
   },
   {
@@ -71,8 +82,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Ram",
     year: 2020,
     registrationNumber: "PQR678",
-    type: "truck",
-    status: "available",
+    type: VehicleType.truck,
+    status: VehicleStatus.available,
     driverId: null,
   },
   {
@@ -81,8 +92,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "NV200",
     year: 2021,
     registrationNumber: "STU901",
-    type: "van",
-    status: "available",
+    type: VehicleType.van,
+    status: VehicleStatus.available,
     driverId: "3",
   },
   {
@@ -91,8 +102,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "N-Series",
     year: 2018,
     registrationNumber: "VWX234",
-    type: "truck",
-    status: "inUse",
+    type: VehicleType.truck,
+    status: VehicleStatus.inUse,
     driverId: "4",
   },
   {
@@ -101,8 +112,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Express",
     year: 2019,
     registrationNumber: "YZA567",
-    type: "van",
-    status: "available",
+    type: VehicleType.van,
+    status: VehicleStatus.available,
     driverId: null,
   },
   {
@@ -111,8 +122,8 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     model: "Hilux",
     year: 2022,
     registrationNumber: "BCD890",
-    type: "truck",
-    status: "available",
+    type: VehicleType.truck,
+    status: VehicleStatus.available,
     driverId: null,
   },
 ];
