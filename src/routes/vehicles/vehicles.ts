@@ -7,6 +7,7 @@ import { VehicleSchema } from './schemas/vehicle.schema.js';
 import { v4 as uuidv4 } from 'uuid';
 import { SuccessHandler } from '../../shared/services/success-handler.js';
 import { DelayHandler } from '../../shared/services/delay-handler.js';
+import { ApiParamsBuilder } from '../../shared/services/api-params-builder.js';
 
 export class Vehicle {
   private static vehiclesList: VehicleInterface[] = VEHICLES_DATA;
@@ -38,8 +39,9 @@ export class Vehicle {
     );
   }
 
-  private static getVehiclesList(_req: Request, res: Response) {
-    res.json(this.vehiclesList);
+  private static getVehiclesList(req: Request, res: Response) {
+    const builtResponse = ApiParamsBuilder.buildList(this.vehiclesList, req);
+    res.json(builtResponse);
   }
 
   private static getVehicleDetails(req: Request, res: Response) {
