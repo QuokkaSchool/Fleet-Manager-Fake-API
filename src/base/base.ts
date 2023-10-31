@@ -1,8 +1,9 @@
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { Vehicle } from '../routes/vehicles/index.js';
 import { Dictionaries } from '../routes/dictionaries/index.js';
+import { Vehicle } from '../routes/vehicles/index.js';
+import { Drivers } from '../routes/drivers/index.js';
 
 export class Server {
   public static port: number = 8080;
@@ -16,6 +17,7 @@ export class Server {
     // Routes
     Dictionaries.routes();
     Vehicle.routes();
+    Drivers.routes();
   }
 
   private static appConfigure(): void {

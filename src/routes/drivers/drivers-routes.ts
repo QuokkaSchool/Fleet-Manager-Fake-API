@@ -1,5 +1,5 @@
-export class VehiclesRoutes {
-  private static root = 'vehicles';
+export class DriversRoutes {
+  private static root = 'drivers';
 
   public static getList = () => `/${this.root}`;
   public static getDetails = () => `/${this.root}/:id`;

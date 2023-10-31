@@ -1,41 +1,41 @@
 import { Server } from '../../base/base.js';
-import { VehiclesRoutes } from './vehicles-routes.js';
 import { Request, Response } from 'express';
-import { VehicleInterface, VEHICLES_DATA } from './vehicles-data.js';
-import { ErrorHandler } from '../../shared/services/error-handler.js';
-import { VehicleSchema } from './schemas/vehicle.schema.js';
-import { v4 as uuidv4 } from 'uuid';
-import { SuccessHandler } from '../../shared/services/success-handler.js';
 import { DelayHandler } from '../../shared/services/delay-handler.js';
 import { ApiParamsBuilder } from '../../shared/services/api-params-builder.js';
-import { Drivers } from '../drivers/index.js';
+import { ErrorHandler } from '../../shared/services/error-handler.js';
+import { v4 as uuidv4 } from 'uuid';
+import { SuccessHandler } from '../../shared/services/success-handler.js';
+import { DriverInterface, DRIVERS_DATA } from './drivers-data.js';
+import { DriversRoutes } from './drivers-routes.js';
+import { DriverSchema } from './schemas/driver.schema.js';
+import { Vehicle } from '../vehicles/index.js';
 
-export class Vehicle {
-  public static list: VehicleInterface[] = VEHICLES_DATA;
+export class Drivers {
+  public static list: DriverInterface[] = DRIVERS_DATA;
 
   public static routes(): void {
     Server.app.get(
-      VehiclesRoutes.getList(),
+      DriversRoutes.getList(),
       (req: Request, res: Response) => DelayHandler.delay(() => this.getList(req, res)),
     );
 
     Server.app.get(
-      VehiclesRoutes.getDetails(),
+      DriversRoutes.getDetails(),
       (req: Request, res: Response) => DelayHandler.delay(() => this.getDetails(req, res)),
     );
 
     Server.app.post(
-      VehiclesRoutes.add(),
+      DriversRoutes.add(),
       (req: Request, res: Response) => DelayHandler.delay(() => this.add(req, res)),
     );
 
     Server.app.put(
-      VehiclesRoutes.update(),
+      DriversRoutes.update(),
       (req: Request, res: Response) => DelayHandler.delay(() => this.update(req, res)),
     );
 
     Server.app.delete(
-      VehiclesRoutes.remove(),
+      DriversRoutes.remove(),
       (req: Request, res: Response) => DelayHandler.delay(() => this.remove(req, res)),
     );
   }
@@ -46,7 +46,7 @@ export class Vehicle {
   }
 
   private static getDetails(req: Request, res: Response): void {
-    const foundItem: VehicleInterface = this.list.find(
+    const foundItem: DriverInterface = this.list.find(
       (vehicle) => vehicle.id === req.params.id
     );
 
@@ -57,16 +57,11 @@ export class Vehicle {
 
   private static add(req: Request, res: Response): void {
     try {
-      const driverId = req.body.driverId;
-      const foundDriver = Drivers.list.find(
-        (driver) => driver.id === driverId
-      );
-      const newItem = VehicleSchema.vehicle().parse({
+      const newItem = DriverSchema.driver().parse({
         id: uuidv4(),
         ...req.body,
-        driver: foundDriver,
       });
-      this.list.push(<VehicleInterface><unknown>newItem);
+      this.list.push(<DriverInterface><unknown>newItem);
       SuccessHandler.handleCreated(res);
     } catch (error) {
       ErrorHandler.handleBadRequest(res, error.message);
@@ -75,19 +70,21 @@ export class Vehicle {
 
   private static update(req: Request, res: Response): void {
     const id = req.params.id;
-    const driverId = req.body.driverId;
-    const foundItem = Drivers.list.find(
-      (driver) => driver.id === driverId
-    );
     const index = this.list.findIndex(
-      (vehicle) => vehicle.id === id
+      (driver) => driver.id === id
     );
 
     if (index === -1) return ErrorHandler.handleNotFound(res);
 
     try {
-      const updatedItem = VehicleSchema.updateVehicle().parse(req.body);
-      this.list[index] = <VehicleInterface><unknown>{ id, ...updatedItem, driver: foundItem };
+      const updatedItem = DriverSchema.updateDriver().parse(req.body);
+      this.list[index] = <DriverInterface><unknown>{ id, ...updatedItem };
+      const modifiedVehicleList = Vehicle.list.map(
+        (vehicle) => vehicle.driver?.id === id
+          ? { ...vehicle, driver: <DriverInterface><unknown>{ id, ...updatedItem } }
+          : vehicle
+      );
+      Vehicle.list = modifiedVehicleList;
       SuccessHandler.handleOk(res);
     } catch (error) {
       ErrorHandler.handleBadRequest(res, error.message);
@@ -97,12 +94,18 @@ export class Vehicle {
   private static remove(req: Request, res: Response): void {
     const id = req.params.id;
     const index = this.list.findIndex(
-        (item) => item.id === id
+      (driver) => driver.id === id
     );
 
     if (index === -1) return ErrorHandler.handleNotFound(res);
 
     this.list.splice(index, 1);
+    const modifiedVehicleList = Vehicle.list.map(
+      (vehicle) => vehicle.driver?.id === id
+        ? { ...vehicle, driver: null }
+        : vehicle
+    );
+    Vehicle.list = modifiedVehicleList;
     SuccessHandler.handleOk(res);
   }
 }
