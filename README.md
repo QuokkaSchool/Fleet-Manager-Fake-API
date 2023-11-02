@@ -14,10 +14,6 @@ This project provides a hands-on experience for frontend developers eager to lea
 
 ## Documentation
 
-[![TypeScript version][ts-badge]][typescript-5-1]
-[![Node.js version][nodejs-badge]][nodejs]
-[![APLv2][license-badge]][license]
-
 👩🏻‍💻 Start template is based on a [node-typescript-boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate).
 
 🏃🏽 Instant Value: All basic tools included and configured:
