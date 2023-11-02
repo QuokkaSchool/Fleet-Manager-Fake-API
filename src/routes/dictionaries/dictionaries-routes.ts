@@ -3,4 +3,5 @@ export class DictionariesRoutes {
 
   public static getVehicleType = () => `/${this.root}/vehicleType`;
   public static getVehicleStatus = () => `/${this.root}/vehicleStatus`;
+  public static getOrderStatus = () => `/${this.root}/orderStatus`;
 }

@@ -8,7 +8,7 @@ import { SuccessHandler } from '../../shared/services/success-handler.js';
 import { DriverInterface, DRIVERS_DATA } from './drivers-data.js';
 import { DriversRoutes } from './drivers-routes.js';
 import { DriverSchema } from './schemas/driver.schema.js';
-import { Vehicle } from '../vehicles/index.js';
+import { Vehicles } from '../vehicles/index.js';
 
 export class Drivers {
   public static list: DriverInterface[] = DRIVERS_DATA;
@@ -79,12 +79,6 @@ export class Drivers {
     try {
       const updatedItem = DriverSchema.updateDriver().parse(req.body);
       this.list[index] = <DriverInterface><unknown>{ id, ...updatedItem };
-      const modifiedVehicleList = Vehicle.list.map(
-        (vehicle) => vehicle.driver?.id === id
-          ? { ...vehicle, driver: <DriverInterface><unknown>{ id, ...updatedItem } }
-          : vehicle
-      );
-      Vehicle.list = modifiedVehicleList;
       SuccessHandler.handleOk(res);
     } catch (error) {
       ErrorHandler.handleBadRequest(res, error.message);
@@ -100,12 +94,14 @@ export class Drivers {
     if (index === -1) return ErrorHandler.handleNotFound(res);
 
     this.list.splice(index, 1);
-    const modifiedVehicleList = Vehicle.list.map(
-      (vehicle) => vehicle.driver?.id === id
-        ? { ...vehicle, driver: null }
+
+    const modifiedVehicles = Vehicles.list.map((vehicle) =>
+      vehicle.driverId === id
+        ? { ...vehicle, driverId: null }
         : vehicle
     );
-    Vehicle.list = modifiedVehicleList;
+    Vehicles.list = modifiedVehicles;
+
     SuccessHandler.handleOk(res);
   }
 }

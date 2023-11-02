@@ -4,6 +4,7 @@ import { Server } from '../../base/base.js';
 import { DictionariesRoutes } from './dictionaries-routes.js';
 import { Request, Response } from 'express';
 import { DelayHandler } from '../../shared/services/delay-handler.js';
+import { OrderStatus } from '../orders/orders-data.js';
 
 export interface Dictionary {
   id: string;
@@ -14,6 +15,7 @@ export interface Dictionary {
 export class Dictionaries {
   private static readonly vehicleTypeDictionary: Dictionary[] = this.parseEnumToDictionary(VehicleType);
   private static readonly vehicleStatusDictionary: Dictionary[] = this.parseEnumToDictionary(VehicleStatus);
+  private static readonly orderStatusDictionary: Dictionary[] = this.parseEnumToDictionary(OrderStatus);
 
   public static routes(): void {
     Server.app.get(
@@ -26,6 +28,12 @@ export class Dictionaries {
       DictionariesRoutes.getVehicleStatus(),
       (req: Request, res: Response) => DelayHandler.delay(() =>
         this.getDictionary(req, res, this.vehicleStatusDictionary)),
+    );
+
+    Server.app.get(
+      DictionariesRoutes.getOrderStatus(),
+      (req: Request, res: Response) => DelayHandler.delay(() =>
+        this.getDictionary(req, res, this.orderStatusDictionary)),
     );
   }
 

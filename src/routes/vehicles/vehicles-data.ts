@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { DriverInterface, DRIVERS_DATA } from '../drivers/drivers-data.js';
+import { DRIVERS_DATA } from '../drivers/drivers-data.js';
 
 export enum VehicleType {
   truck = 'Ciężarówka',
@@ -20,7 +20,7 @@ export interface VehicleInterface {
   registrationNumber: string;
   type: VehicleType;
   status: VehicleStatus;
-  driver: DriverInterface | null;
+  driverId: string | null;
 }
 
 export const VEHICLES_DATA: VehicleInterface[] = [
@@ -32,7 +32,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'ABC123',
     type: VehicleType.truck,
     status: VehicleStatus.available,
-    driver: DRIVERS_DATA[1],
+    driverId: DRIVERS_DATA[1].id,
   },
   {
     id: uuidv4(),
@@ -42,7 +42,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'DEF456',
     type: VehicleType.van,
     status: VehicleStatus.inUse,
-    driver: DRIVERS_DATA[3],
+    driverId: DRIVERS_DATA[3].id,
   },
   {
     id: uuidv4(),
@@ -52,7 +52,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'GHI789',
     type: VehicleType.van,
     status: VehicleStatus.available,
-    driver: DRIVERS_DATA[0],
+    driverId: DRIVERS_DATA[0].id,
   },
   {
     id: uuidv4(),
@@ -62,7 +62,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'JKL012',
     type: VehicleType.truck,
     status: VehicleStatus.underMaintenance,
-    driver: DRIVERS_DATA[2],
+    driverId: DRIVERS_DATA[2].id,
   },
   {
     id: uuidv4(),
@@ -72,7 +72,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'MNO345',
     type: VehicleType.van,
     status: VehicleStatus.available,
-    driver: null,
+    driverId: null,
   },
   {
     id: uuidv4(),
@@ -82,7 +82,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'PQR678',
     type: VehicleType.truck,
     status: VehicleStatus.available,
-    driver: null,
+    driverId: null,
   },
   {
     id: uuidv4(),
@@ -92,7 +92,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'STU901',
     type: VehicleType.van,
     status: VehicleStatus.available,
-    driver: DRIVERS_DATA[4],
+    driverId: DRIVERS_DATA[4].id,
   },
   {
     id: uuidv4(),
@@ -102,7 +102,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'VWX234',
     type: VehicleType.truck,
     status: VehicleStatus.inUse,
-    driver: DRIVERS_DATA[6],
+    driverId: DRIVERS_DATA[6].id,
   },
   {
     id: uuidv4(),
@@ -112,7 +112,7 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'YZA567',
     type: VehicleType.van,
     status: VehicleStatus.available,
-    driver: null,
+    driverId: null,
   },
   {
     id: uuidv4(),
@@ -122,6 +122,6 @@ export const VEHICLES_DATA: VehicleInterface[] = [
     registrationNumber: 'BCD890',
     type: VehicleType.truck,
     status: VehicleStatus.available,
-    driver: DRIVERS_DATA[5],
+    driverId: DRIVERS_DATA[5].id,
   },
 ];

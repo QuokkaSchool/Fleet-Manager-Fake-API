@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { VehicleStatus, VehicleType } from '../vehicles-data.js';
 
 export class VehicleSchema {
   public static vehicle = () =>
@@ -8,8 +9,8 @@ export class VehicleSchema {
       model: z.string(),
       year: z.number(),
       registrationNumber: z.string(),
-      type: z.enum(["truck", "van"]),
-      status: z.enum(["available", "inUse", "underMaintenance"]),
+      type: z.nativeEnum(VehicleType),
+      status: z.nativeEnum(VehicleStatus),
       driverId: z.string().nullable(),
     });
 
@@ -19,8 +20,8 @@ export class VehicleSchema {
       model: z.string(),
       year: z.number(),
       registrationNumber: z.string(),
-      type: z.enum(["truck", "van"]),
-      status: z.enum(["available", "inUse", "underMaintenance"]),
+      type: z.nativeEnum(VehicleType),
+      status: z.nativeEnum(VehicleStatus),
       driverId: z.string().nullable(),
     });
 }
