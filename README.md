@@ -76,7 +76,7 @@ Query Params
 | sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
 | order  | defines the sorting order for the specified property | asc \| desc |
 
-Response Types
+Response Type
 
 ```
 {
@@ -141,4 +141,139 @@ Response Example
   ]
 }
 ```
+
+#### GET [Vehicles/Item] Get Vehicle Item
+
+```sh
+  /vehicles/:id
+```
+
+Response Type
+
+```
+{
+  "id": string,
+  "brand": string,
+  "model": string,
+  "year": number,
+  "registrationNumber": string,
+  "type": 'Ciężarówka' | 'Furgonetka',
+  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "driverId": string
+}
+```
+
+Response Example
+
+```json
+{
+  "id": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+  "brand": "Volvo",
+  "model": "FH16",
+  "year": 2022,
+  "registrationNumber": "ABC123",
+  "type": "Ciężarówka",
+  "status": "Dostępny",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad"
+}
+```
+
+#### POST [Vehicles/Add] Add Vehicle
+
+```sh
+  /vehicles/add
+```
+
+Request Type
+
+```
+{
+  "brand": string,
+  "model": string,
+  "year": number,
+  "registrationNumber": string,
+  "type": 'Ciężarówka' | 'Furgonetka',
+  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "driverId": string
+}
+```
+
+Request Example
+
+```json
+{
+  "brand": "Volvo",
+  "model": "FH16",
+  "year": 2022,
+  "registrationNumber": "ABC123",
+  "type": "Ciężarówka",
+  "status": "Dostępny",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+#### PUT [Vehicles/Update] Update Vehicle
+
+```sh
+  /vehicles/update/:id
+```
+
+Request Type
+
+```
+{
+  "brand": string,
+  "model": string,
+  "year": number,
+  "registrationNumber": string,
+  "type": 'Ciężarówka' | 'Furgonetka',
+  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "driverId": string
+}
+```
+
+Request Example
+
+```json
+{
+  "brand": "Volvo",
+  "model": "FH16",
+  "year": 2022,
+  "registrationNumber": "ABC123",
+  "type": "Ciężarówka",
+  "status": "Dostępny",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+#### DELETE [Vehicles/Del] Del Vehicle
+
+```sh
+  /vehicles/delete/:id
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
 
