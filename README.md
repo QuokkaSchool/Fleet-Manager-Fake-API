@@ -477,6 +477,14 @@ Response Type
   /drivers/delete/:id
 ```
 
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
 ## Orders
 
 ### GET [Orders/List] Get Orders List
@@ -696,4 +704,12 @@ Response Type
 
 ```sh
   /orders/delete/:id
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
 ```
