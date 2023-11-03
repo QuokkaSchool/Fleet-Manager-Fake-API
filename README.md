@@ -59,7 +59,7 @@ npm install
   http://localhost:8080
 ```
 
-### Vehicles
+## Vehicles
 
 ### GET [Vehicles/List] Get Vehicles List
 
@@ -234,8 +234,8 @@ Request Type
   "model": string,
   "year": number,
   "registrationNumber": string,
-  "type": 'Ciężarówka' | 'Furgonetka',
-  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "type": "Ciężarówka" | "Furgonetka",
+  "status": "Dostępny" | "W użyciu" | "Podczas prac technicznych",
   "driverId": string
 }
 ```
@@ -276,7 +276,7 @@ Response Type
 }
 ```
 
-### Drivers
+## Drivers
 
 ### GET [Drivers/List] Get Drivers List
 
@@ -477,3 +477,223 @@ Response Type
   /drivers/delete/:id
 ```
 
+## Orders
+
+### GET [Orders/List] Get Orders List
+
+```sh
+  /orders
+```
+
+Query Params
+
+| Key  | Description | Value |
+| ------------- | ------------- | ------------- |
+| page  | active page  | number |
+| limit  | limit of items per page | number |
+| sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
+| order  | defines the sorting order for the specified property | asc \| desc |
+
+Response Type
+
+```
+{
+  "items": [
+    {
+      "id": string,
+      "pickupLocation": string,
+      "deliveryLocation": string,
+      "cargoDescription": string,
+      "pickupTime": string,
+      "deliveryTime": string,
+      "vehicleId": string,
+      "driverId": string,
+      "status": "Oczekujące" | "W trakcie" | "Ukończone"
+    },
+    {
+      "id": string,
+      "pickupLocation": string,
+      "deliveryLocation": string,
+      "cargoDescription": string,
+      "pickupTime": string,
+      "deliveryTime": string,
+      "vehicleId": string,
+      "driverId": string,
+      "status": "Oczekujące" | "W trakcie" | "Ukończone"
+    },
+  ],
+  "info": [
+    "page": number,
+    "limit": number,
+    "totalResults": number,
+  ]
+}
+```
+
+Response Example
+
+```json
+{
+  "items": [
+    {
+      "id": "c0a42a53-902f-4b68-9740-d9c7dc3ea2c7",
+      "pickupLocation": "Warszawa, Polska",
+      "deliveryLocation": "Kraków, Polska",
+      "cargoDescription": "Paczka o wymiarach 30x20x15 cm",
+      "pickupTime": "2023-11-01T10:00:00Z",
+      "deliveryTime": "2023-11-01T14:00:00Z",
+      "vehicleId": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+      "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad",
+      "status": "Oczekujące"
+    },
+    {
+      "id": "ae047350-b744-4a0d-ad23-e168a67e0b6f",
+      "pickupLocation": "Gdańsk, Polska",
+      "deliveryLocation": "Szczecin, Polska",
+      "cargoDescription": "Paleta z towarem",
+      "pickupTime": "2023-11-02T08:30:00Z",
+      "deliveryTime": "2023-11-02T16:30:00Z",
+      "vehicleId": "fb61663d-f80a-45bb-82c1-8b0a4ea9f8bc",
+      "driverId": "1195798b-cbd3-4707-a07d-f00487c25577",
+      "status": "W trakcie"
+    },
+  ],
+  "info": [
+    "page": 1,
+    "limit": 2,
+    "totalResults": 10,
+  ]
+}
+```
+
+### GET [Orders/Item] Get Order Item
+
+```sh
+  /orders/:id
+```
+
+Response Type
+
+```
+{
+  "id": string,
+  "pickupLocation": string,
+  "deliveryLocation": string,
+  "cargoDescription": string,
+  "pickupTime": string,
+  "deliveryTime": string,
+  "vehicleId": string,
+  "driverId": string,
+  "status": "Oczekujące" | "W trakcie" | "Ukończone"
+}
+```
+
+Response Example
+
+```json
+{
+  "id": "c0a42a53-902f-4b68-9740-d9c7dc3ea2c7",
+  "pickupLocation": "Warszawa, Polska",
+  "deliveryLocation": "Kraków, Polska",
+  "cargoDescription": "Paczka o wymiarach 30x20x15 cm",
+  "pickupTime": "2023-11-01T10:00:00Z",
+  "deliveryTime": "2023-11-01T14:00:00Z",
+  "vehicleId": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad",
+  "status": "Oczekujące"
+}
+```
+
+### POST [Orders/Add] Add Order
+
+```sh
+  /orders/add
+```
+
+Request Type
+
+```
+{
+  "pickupLocation": string,
+  "deliveryLocation": string,
+  "cargoDescription": string,
+  "pickupTime": string,
+  "deliveryTime": string,
+  "vehicleId": string,
+  "driverId": string,
+  "status": "Oczekujące" | "W trakcie" | "Ukończone"
+}
+```
+
+Request Example
+
+```json
+{
+  "pickupLocation": "Warszawa, Polska",
+  "deliveryLocation": "Kraków, Polska",
+  "cargoDescription": "Paczka o wymiarach 30x20x15 cm",
+  "pickupTime": "2023-11-01T10:00:00Z",
+  "deliveryTime": "2023-11-01T14:00:00Z",
+  "vehicleId": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad",
+  "status": "Oczekujące"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+### PUT [Orders/Update] Update Order
+
+```sh
+  /orders/update/:id
+```
+
+Request Type
+
+```
+{
+  "pickupLocation": string,
+  "deliveryLocation": string,
+  "cargoDescription": string,
+  "pickupTime": string,
+  "deliveryTime": string,
+  "vehicleId": string,
+  "driverId": string,
+  "status": "Oczekujące" | "W trakcie" | "Ukończone"
+}
+```
+
+Request Example
+
+```json
+{
+  "pickupLocation": "Warszawa, Polska",
+  "deliveryLocation": "Kraków, Polska",
+  "cargoDescription": "Paczka o wymiarach 30x20x15 cm",
+  "pickupTime": "2023-11-01T10:00:00Z",
+  "deliveryTime": "2023-11-01T14:00:00Z",
+  "vehicleId": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+  "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad",
+  "status": "Oczekujące"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+### DELETE [Orders/Del] Del Order
+
+```sh
+  /orders/delete/:id
+```
