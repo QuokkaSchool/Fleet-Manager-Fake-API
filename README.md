@@ -53,13 +53,15 @@ npm install
 
 ## Endpoints
 
-### Root
+### Root URL
 
 ```sh
   http://localhost:8080
 ```
 
-### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
+#### Vehicles
+
+### GET [Vehicles/List] Get Vehicles List
 
 ```sh
   /vehicles
