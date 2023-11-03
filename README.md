@@ -61,7 +61,7 @@ npm install
 
 ### Vehicles
 
-#### GET [Vehicles/List] Get Vehicles List
+### GET [Vehicles/List] Get Vehicles List
 
 ```sh
   /vehicles
@@ -142,7 +142,7 @@ Response Example
 }
 ```
 
-#### GET [Vehicles/Item] Get Vehicle Item
+### GET [Vehicles/Item] Get Vehicle Item
 
 ```sh
   /vehicles/:id
@@ -178,7 +178,7 @@ Response Example
 }
 ```
 
-#### POST [Vehicles/Add] Add Vehicle
+### POST [Vehicles/Add] Add Vehicle
 
 ```sh
   /vehicles/add
@@ -220,7 +220,7 @@ Response Type
 }
 ```
 
-#### PUT [Vehicles/Update] Update Vehicle
+### PUT [Vehicles/Update] Update Vehicle
 
 ```sh
   /vehicles/update/:id
@@ -262,7 +262,7 @@ Response Type
 }
 ```
 
-#### DELETE [Vehicles/Del] Del Vehicle
+### DELETE [Vehicles/Del] Del Vehicle
 
 ```sh
   /vehicles/delete/:id
@@ -276,4 +276,204 @@ Response Type
 }
 ```
 
+### Drivers
+
+### GET [Drivers/List] Get Drivers List
+
+```sh
+  /drivers
+```
+
+Query Params
+
+| Key  | Description | Value |
+| ------------- | ------------- | ------------- |
+| page  | active page  | number |
+| limit  | limit of items per page | number |
+| sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
+| order  | defines the sorting order for the specified property | asc \| desc |
+
+Response Type
+
+```
+{
+  "items": [
+    {
+      "id": string,
+      "firstName": string,
+      "lastName": string,
+      "phoneNumber": string,
+      "email": string,
+      "birthDate": string,
+      "drivingLicenseNumber": string
+    },
+    {
+      "id": string,
+      "firstName": string,
+      "lastName": string,
+      "phoneNumber": string,
+      "email": string,
+      "birthDate": string,
+      "drivingLicenseNumber": string
+    },
+  ],
+  "info": [
+    "page": number,
+    "limit": number,
+    "totalResults": number,
+  ]
+}
+```
+
+Response Example
+
+```json
+{
+  "items": [
+    {
+      "id": "9a539bce-4d3f-4aa1-9e28-6bcf7e31905a",
+      "firstName": "Adam",
+      "lastName": "Woźniak",
+      "phoneNumber": "222222222",
+      "email": "adam.wozniak@example.com",
+      "birthDate": "1984-11-30",
+      "drivingLicenseNumber": "AAAA11111"
+    },
+    {
+      "id": "16dae322-a651-49a2-8c5f-02b029a03aad",
+      "firstName": "Krzysztof",
+      "lastName": "Kowalski",
+      "phoneNumber": "987654321",
+      "email": "krzysztof.kowalski@example.com",
+      "birthDate": "1985-05-15",
+      "drivingLicenseNumber": "EFGH67890"
+    },
+  ],
+  "info": [
+    "page": 1,
+    "limit": 2,
+    "totalResults": 10,
+  ]
+}
+```
+
+### GET [Drivers/Item] Get Driver Item
+
+```sh
+  /drivers/:id
+```
+
+Response Type
+
+```
+{
+  "id": string,
+  "firstName": string,
+  "lastName": string,
+  "phoneNumber": string,
+  "email": string,
+  "birthDate": string,
+  "drivingLicenseNumber": string
+}
+```
+
+Response Example
+
+```json
+{
+  "id": "9a539bce-4d3f-4aa1-9e28-6bcf7e31905a",
+  "firstName": "Adam",
+  "lastName": "Woźniak",
+  "phoneNumber": "222222222",
+  "email": "adam.wozniak@example.com",
+  "birthDate": "1984-11-30",
+  "drivingLicenseNumber": "AAAA11111"
+}
+```
+
+### POST [Drivers/Add] Add Driver
+
+```sh
+  /drivers/add
+```
+
+Request Type
+
+```
+{
+  "firstName": string,
+  "lastName": string,
+  "phoneNumber": string,
+  "email": string,
+  "birthDate": string,
+  "drivingLicenseNumber": string
+}
+```
+
+Request Example
+
+```json
+{
+  "firstName": "Adam",
+  "lastName": "Woźniak",
+  "phoneNumber": "222222222",
+  "email": "adam.wozniak@example.com",
+  "birthDate": "1984-11-30",
+  "drivingLicenseNumber": "AAAA11111"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+### PUT [Drivers/Update] Update Driver
+
+```sh
+  /drivers/update/:id
+```
+
+Request Type
+
+```
+{
+  "firstName": string,
+  "lastName": string,
+  "phoneNumber": string,
+  "email": string,
+  "birthDate": string,
+  "drivingLicenseNumber": string
+}
+```
+
+Request Example
+
+```json
+{
+  "firstName": "Krzysztof",
+  "lastName": "Kowalskiii",
+  "phoneNumber": "987654321",
+  "email": "krzysztof.kowalski@example.com",
+  "birthDate": "1985-05-15",
+  "drivingLicenseNumber": "EFGH67890"
+}
+```
+
+Response Type
+
+```
+{
+    "message": string
+}
+```
+
+### DELETE [Drivers/Del] Del Driver
+
+```sh
+  /drivers/delete/:id
+```
 
