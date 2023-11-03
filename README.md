@@ -86,8 +86,8 @@ Response Type
       "model": string,
       "year": number,
       "registrationNumber": string,
-      "type": 'Ciężarówka' | 'Furgonetka',
-      "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+      "type": "Ciężarówka" | "Furgonetka",
+      "status": "Dostępny" | "W użyciu" | "Podczas prac technicznych",
       "driverId": string
     },
     {
@@ -95,8 +95,8 @@ Response Type
       "model": string,
       "year": number,
       "registrationNumber": string,
-      "type": 'Ciężarówka' | 'Furgonetka',
-      "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+      "type": "Ciężarówka" | "Furgonetka",
+      "status": "Dostępny" | "W użyciu" | "Podczas prac technicznych",
       "driverId": string
     }
   ],
@@ -157,8 +157,8 @@ Response Type
   "model": string,
   "year": number,
   "registrationNumber": string,
-  "type": 'Ciężarówka' | 'Furgonetka',
-  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "type": "Ciężarówka" | "Furgonetka",
+  "status": "Dostępny" | "W użyciu" | "Podczas prac technicznych",
   "driverId": string
 }
 ```
@@ -192,8 +192,8 @@ Request Type
   "model": string,
   "year": number,
   "registrationNumber": string,
-  "type": 'Ciężarówka' | 'Furgonetka',
-  "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+  "type": "Ciężarówka" | "Furgonetka",
+  "status": "Dostępny" | "W użyciu" | "Podczas prac technicznych",
   "driverId": string
 }
 ```
