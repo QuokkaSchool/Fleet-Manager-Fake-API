@@ -290,7 +290,7 @@ Query Params
 | ------------- | ------------- | ------------- |
 | page  | active page  | number |
 | limit  | limit of items per page | number |
-| sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
+| sort  | specifies the property by which you want to sort the data | id \| firstName \| lastName \| phoneNumber \| email \| birthDate \| drivingLicenseNumber |
 | order  | defines the sorting order for the specified property | asc \| desc |
 
 Response Type
@@ -491,7 +491,7 @@ Query Params
 | ------------- | ------------- | ------------- |
 | page  | active page  | number |
 | limit  | limit of items per page | number |
-| sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
+| sort  | specifies the property by which you want to sort the data | id \| pickupLocation \| deliveryLocation \| cargoDescription \| pickupTime \| deliveryTime \| status |
 | order  | defines the sorting order for the specified property | asc \| desc |
 
 Response Type
