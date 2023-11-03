@@ -53,7 +53,7 @@ npm install
 
 ## Endpoints
 
-### Root URL
+Root URL
 
 ```sh
   http://localhost:8080
