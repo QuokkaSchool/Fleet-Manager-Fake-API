@@ -59,11 +59,19 @@ npm install
   http://localhost:8080
 ```
 
-#### Vehicles
+### Vehicles
 
-### GET [Vehicles/List] Get Vehicles List
+#### GET [Vehicles/List] Get Vehicles List
 
 ```sh
   /vehicles
 ```
 
+Query Params
+
+| Key  | Description | Value |
+| ------------- | ------------- | ------------- |
+| page  | active page  | number |
+| limit  | limit of items per page | number |
+| sort  | specifies the property by which you want to sort the data | id|brand|model|year|registrationNumber|type|status |
+| order  | defines the sorting order for the specified property | asc|desc |
