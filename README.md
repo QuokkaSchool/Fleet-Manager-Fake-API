@@ -76,9 +76,9 @@ Query Params
 | sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
 | order  | defines the sorting order for the specified property | asc \| desc |
 
-Response Body
+Response Types
 
-```json
+```
 {
   "items": [
     {
@@ -104,6 +104,40 @@ Response Body
     "page": number,
     "limit": number,
     "totalResults": number,
+  ]
+}
+```
+
+Response Example
+
+```json
+{
+  "items": [
+    {
+      "id": "687b8675-2e45-47f8-a3b9-31ee52bccc74",
+      "brand": "Volvo",
+      "model": "FH16",
+      "year": 2022,
+      "registrationNumber": "ABC123",
+      "type": "Ciężarówka",
+      "status": "Dostępny",
+      "driverId": "16dae322-a651-49a2-8c5f-02b029a03aad"
+    },
+    {
+      "id": "fb61663d-f80a-45bb-82c1-8b0a4ea9f8bc",
+      "brand": "Mercedes-Benz",
+      "model": "Sprinter",
+      "year": 2021,
+      "registrationNumber": "DEF456",
+      "type": "Furgonetka",
+      "status": "W użyciu",
+      "driverId": "1195798b-cbd3-4707-a07d-f00487c25577"
+    },
+  ],
+  "info": [
+    "page": 1,
+    "limit": 2,
+    "totalResults": 10,
   ]
 }
 ```
