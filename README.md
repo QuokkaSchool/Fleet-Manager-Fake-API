@@ -74,4 +74,37 @@ Query Params
 | page  | active page  | number |
 | limit  | limit of items per page | number |
 | sort  | specifies the property by which you want to sort the data | id \| brand \| model \| year \| registrationNumber \| type \| status |
-| order  | defines the sorting order for the specified property | asc\|desc |
+| order  | defines the sorting order for the specified property | asc \| desc |
+
+Response Body
+
+```json
+{
+  "items": [
+    {
+      "brand": string,
+      "model": string,
+      "year": number,
+      "registrationNumber": string,
+      "type": 'Ciężarówka' | 'Furgonetka',
+      "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+      "driverId": string
+    },
+    {
+      "brand": string,
+      "model": string,
+      "year": number,
+      "registrationNumber": string,
+      "type": 'Ciężarówka' | 'Furgonetka',
+      "status": 'Dostępny' | 'W użyciu' | 'Podczas prac technicznych',
+      "driverId": string
+    }
+  ],
+  "info": [
+    "page": number,
+    "limit": number,
+    "totalResults": number,
+  ]
+}
+```
+
